@@ -101,8 +101,7 @@ namespace ManagementApartments.Controllers
                 {
                     StatusSuccess = true,
                     LogoAsBase64 = logoAsBase64
-                },
-                    new { MaxJsonLength = Int32.MaxValue });
+                });
             }
             else
             {

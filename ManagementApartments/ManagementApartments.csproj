@@ -7,6 +7,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Include="wwwroot\lib\sweetalert\lib\.sass-cache\7981e80cc38cc883c439302cccda55b50fb7fde4\sweet-alert.scssc" />
+  </ItemGroup>
+
+  <ItemGroup>
     <PackageReference Include="AutoMapper" Version="11.0.1" />
     <PackageReference Include="AutoMapper.Extensions.Microsoft.DependencyInjection" Version="11.0.0" />
     <PackageReference Include="jquery.TypeScript.DefinitelyTyped" Version="3.1.2" />
@@ -19,6 +23,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+    <PackageReference Include="Microsoft.TypeScript.MSBuild" Version="4.6.4">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="5.0.2" />
     <PackageReference Include="sweetalert.TypeScript.DefinitelyTyped" Version="0.3.8" />
     <PackageReference Include="X.PagedList" Version="8.4.0" />
@@ -27,6 +35,12 @@
 
   <ItemGroup>
     <ProjectReference Include="..\ManagementApartments.Data\ManagementApartments.Data.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Update="wwwroot\js\Apartments\ApartmentsEditController.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <PropertyGroup Condition="'$(Configuration)' == 'Debug'">

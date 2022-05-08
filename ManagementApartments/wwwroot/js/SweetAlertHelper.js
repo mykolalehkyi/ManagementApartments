@@ -1,4 +1,4 @@
-/////// <reference path="../../node_modules/sweetalert/typings/sweetalert.d.ts" />
+/// <reference path="../../../node_modules/sweetalert/typings/sweetalert.d.ts" />
 var SweetAlertHelper = /** @class */ (function () {
     function SweetAlertHelper() {
     }

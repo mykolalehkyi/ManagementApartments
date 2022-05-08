@@ -57,7 +57,7 @@
                     <label id="lblInputUpdloadLogo" for="inputUpdloadLogo" class="btn btn-default" tabindex="0">Select Logo</label>
                     <input id="inputUpdloadLogo" type="file" class="btn btn-default" style="display:none;" />
                 </div>
-                <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveLogo", "MaintWarehouseMaster")" disabled />
+                <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveImage", "Apartments")" disabled />
                 <div class="input-group-btn">
                     <label id="lblBtnDeleteLogo" class="btn btn-grid-action" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "MaintWarehouseMaster")">Delete Logo</label>
                 </div>
@@ -77,5 +77,5 @@
 
 @section Scripts {
     @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
-    <script src="~/js/Apartments/apartmentsEdit.js"></script>
+    <script src="~/js/Apartments/ApartmentsEditController.js"></script>
 }

@@ -1,4 +1,5 @@
-﻿/////// <reference path="../../node_modules/sweetalert/typings/sweetalert.d.ts" />
+﻿/// <reference path="../../../node_modules/sweetalert/typings/sweetalert.d.ts" />
+///// <reference path="../lib/sweetalert/sweetalert.min.js" />
 
 
 class SweetAlertHelper {
@@ -11,7 +12,7 @@ class SweetAlertHelper {
     static showSuccessAlert(title: string, text: string, confirmCallback: any = undefined, closeOnConfirm: boolean = true, html: boolean = false) {
         var previousWindowKeyDown = window.onkeydown;
 
-        (<any>swal)({
+        swal.default({
             title: title,
             text: text,
             type: "success",

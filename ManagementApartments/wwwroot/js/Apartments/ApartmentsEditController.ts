@@ -1,6 +1,6 @@
-﻿/// <reference path="../../lib/sweetalert/sweetalert.min.js" />
-/// <reference path="../sweetalerthelper.ts" />
-/// <reference path="../../lib/jquery/dist/jquery.js" />
+﻿/////// <reference path="../../lib/sweetalert/sweetalert.min.js" />
+/////// <reference path="../sweetalerthelper.ts" />
+/////// <reference path="../../lib/jquery/dist/jquery.js" />
 
 namespace Apartments {
 
@@ -66,7 +66,7 @@ namespace Apartments {
                     return;
                 }
 
-                formData.append("uploadFile", fileInputElement.files[0]);
+                formData.append("file", fileInputElement.files[0]);
                 formData.append("apartmentId", controller.elements.Id().val().toString());
 
                 $.ajax({
@@ -132,4 +132,6 @@ namespace Apartments {
             controller.bindLblBtnDeleteImage();
         }
     }
+
+    export var apartmentsEditController = new ApartmentsEditController();
 }
