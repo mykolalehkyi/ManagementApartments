@@ -1,0 +1,81 @@
+﻿@model ManagementApartments.Data.Models.Apartment
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h1>Edit</h1>
+
+<h4>Apartment</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Edit">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="form-group">
+                <label asp-for="Name" class="control-label"></label>
+                <input asp-for="Name" class="form-control" />
+                <span asp-validation-for="Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Description" class="control-label"></label>
+                <input asp-for="Description" class="form-control" />
+                <span asp-validation-for="Description" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApartmentPrice" class="control-label"></label>
+                <input asp-for="ApartmentPrice" class="form-control" />
+                <span asp-validation-for="ApartmentPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="RentPrice" class="control-label"></label>
+                <input asp-for="RentPrice" class="form-control" />
+                <span asp-validation-for="RentPrice" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Area" class="control-label"></label>
+                <input asp-for="Area" class="form-control" />
+                <span asp-validation-for="Area" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="ApplicationUserId" class="control-label"></label>
+                <select asp-for="ApplicationUserId" class="form-control" asp-items="ViewBag.ApplicationUserId"></select>
+                <span asp-validation-for="ApplicationUserId" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Save" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+<div class="col-md-6">
+    <div class="row">
+        <div class="col-sm-12">
+            <div class="input-group">
+                <div class="input-group-btn">
+                    <label id="lblInputUpdloadLogo" for="inputUpdloadLogo" class="btn btn-default" tabindex="0">Select Logo</label>
+                    <input id="inputUpdloadLogo" type="file" class="btn btn-default" style="display:none;" />
+                </div>
+                <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveLogo", "MaintWarehouseMaster")" disabled />
+                <div class="input-group-btn">
+                    <label id="lblBtnDeleteLogo" class="btn btn-grid-action" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "MaintWarehouseMaster")">Delete Logo</label>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-sm-12">
+            <img id="imgLogo" class="full-height @(string.IsNullOrEmpty(Model.ImageContent) ? "hidden" : string.Empty)" style="max-height: 265px" src="@(string.IsNullOrEmpty(Model.ImageContent) ? string.Empty : "data:image/jpg;base64," + Model.ImageContent)" />
+        </div>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+    <script src="~/js/Apartments/apartmentsEdit.js"></script>
+}

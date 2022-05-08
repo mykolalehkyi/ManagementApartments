@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using ManagementApartments.Data.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,6 +12,9 @@ namespace ManagementApartments.Data.Config
     {
         public MapperProfile()
         {
+            CreateMap<Apartment, ApartmentCreateDTO>();
+            CreateMap<ApartmentCreateDTO, Apartment>();
+
         }
     }
 }

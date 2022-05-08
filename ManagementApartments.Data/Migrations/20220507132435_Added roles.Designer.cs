@@ -4,14 +4,16 @@ using ManagementApartments.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManagementApartments.Data.Migrations
 {
     [DbContext(typeof(ManagementApartmentDbContext))]
-    partial class ManagementApartmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220507132435_Added roles")]
+    partial class Addedroles
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -36,9 +38,6 @@ namespace ManagementApartments.Data.Migrations
                         .HasColumnType("float");
 
                     b.Property<string>("Description")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ImageContent")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("Name")
@@ -232,32 +231,6 @@ namespace ManagementApartments.Data.Migrations
                     b.ToTable("Tenant");
                 });
 
-            modelBuilder.Entity("ManagementApartments.Data.Models.Utility", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<int?>("ApartmentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("Date")
-                        .HasColumnType("datetime2");
-
-                    b.Property<double>("Price")
-                        .HasColumnType("float");
-
-                    b.Property<int>("UtilityType")
-                        .HasColumnType("int");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("ApartmentId");
-
-                    b.ToTable("Utility");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -288,14 +261,14 @@ namespace ManagementApartments.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "d1f8ae52-e599-4418-a5f3-dafa45d3d390",
+                            ConcurrencyStamp = "04d8c68e-f9e4-40d1-ab83-f655c10ee586",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "ada48457-a74e-4e2a-985e-143740fa1c7c",
+                            ConcurrencyStamp = "3b2053cf-6261-4911-8a72-e705c650b122",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -412,7 +385,7 @@ namespace ManagementApartments.Data.Migrations
             modelBuilder.Entity("ManagementApartments.Data.Models.Apartment", b =>
                 {
                     b.HasOne("ManagementApartments.Data.Models.ApplicationUser", "ApplicationUser")
-                        .WithMany("Apartments")
+                        .WithMany()
                         .HasForeignKey("ApplicationUserId");
 
                     b.Navigation("ApplicationUser");
@@ -444,13 +417,6 @@ namespace ManagementApartments.Data.Migrations
                     b.HasOne("ManagementApartments.Data.Models.RentPeriod", null)
                         .WithMany("Tenants")
                         .HasForeignKey("RentPeriodId");
-                });
-
-            modelBuilder.Entity("ManagementApartments.Data.Models.Utility", b =>
-                {
-                    b.HasOne("ManagementApartments.Data.Models.Apartment", null)
-                        .WithMany("Utility")
-                        .HasForeignKey("ApartmentId");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -509,13 +475,6 @@ namespace ManagementApartments.Data.Migrations
                     b.Navigation("RentPeriods");
 
                     b.Navigation("Rooms");
-
-                    b.Navigation("Utility");
-                });
-
-            modelBuilder.Entity("ManagementApartments.Data.Models.ApplicationUser", b =>
-                {
-                    b.Navigation("Apartments");
                 });
 
             modelBuilder.Entity("ManagementApartments.Data.Models.RentPeriod", b =>

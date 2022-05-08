@@ -1,0 +1,31 @@
+﻿@using X.PagedList;
+@using X.PagedList.Mvc.Core;
+@using X.PagedList.Web.Common;
+@model IPagedList<Apartment>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h2>Your Apartments</h2>
+
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+
+<div>
+    @if (@Model != null && @Model.Count > 0)
+    {
+        @for (int i = 0; i < @Model.Count; i++)
+        {
+            @(Html.Partial("_ApartmentsListComponent", Model[i]))
+        }
+    }
+</div>
+@Html.PagedListPager(@Model, page => Url.Action("Index",
+    new { Page = page }),
+    new PagedListRenderOptions()
+    {
+        LiElementClasses = new string[] { "page-item" },
+        PageClasses = new string[] { "page-link" }
+    })

@@ -1,6 +1,10 @@
 using ManagementApartments.Data;
 using ManagementApartments.Data.Config;
 using ManagementApartments.Data.Models;
+using ManagementApartments.Data.Repository;
+using ManagementApartments.Data.Repository.Interface;
+using ManagementApartments.Data.Service;
+using ManagementApartments.Data.Service.Interface;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -42,6 +46,10 @@ namespace ManagementApartments
             services.AddDefaultIdentity<ApplicationUser>(options => options.SignIn.RequireConfirmedAccount = false)
                 .AddEntityFrameworkStores<ManagementApartmentDbContext>();
             services.AddRazorPages();
+
+            services.AddScoped<IApartmentsService, ApartmentsService>();
+            services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
+
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.

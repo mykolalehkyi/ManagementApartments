@@ -16,5 +16,7 @@ namespace ManagementApartments.Data.Models
         [PersonalData]
         [Column(TypeName = "nvarchar(100)")]
         public string LastName { get; set; }
+
+        public List<Apartment> Apartments { get; set; }
     }
 }
