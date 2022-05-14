@@ -11,6 +11,8 @@ namespace ManagementApartments.Data.Models
         public string RoomStyle { get; set; }
         public double Area { get; set; }
 
+        public int ApartmentId { get; set; }
+        public Apartment Apartment { get; set; }
         public List<Equipment> Equipment { get; set; }
     }
 }

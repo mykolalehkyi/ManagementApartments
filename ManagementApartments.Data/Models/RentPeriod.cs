@@ -13,6 +13,8 @@ namespace ManagementApartments.Data.Models
         public double Price { get; set; }
         public bool Payed { get; set; }
 
+        public int ApartmentId { get; set; }
+        public Apartment Apartment { get; set; }
         public List<Tenant> Tenants { get; set; }
     }
 }

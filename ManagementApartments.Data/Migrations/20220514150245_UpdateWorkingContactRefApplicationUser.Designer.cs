@@ -4,14 +4,16 @@ using ManagementApartments.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManagementApartments.Data.Migrations
 {
     [DbContext(typeof(ManagementApartmentDbContext))]
-    partial class ManagementApartmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220514150245_UpdateWorkingContactRefApplicationUser")]
+    partial class UpdateWorkingContactRefApplicationUser
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,7 +169,7 @@ namespace ManagementApartments.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int?>("RoomId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -213,7 +215,7 @@ namespace ManagementApartments.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApartmentId")
+                    b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<double>("Area")
@@ -340,14 +342,14 @@ namespace ManagementApartments.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "2acd5995-642a-421f-b1b7-e29aa1d38119",
+                            ConcurrencyStamp = "e661f56c-e53a-48ec-91e9-3e8268098914",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "12868913-8b45-492e-80c5-4df2975732fc",
+                            ConcurrencyStamp = "89e40af4-d99c-4dbc-8a22-6199c9d0f109",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -483,13 +485,9 @@ namespace ManagementApartments.Data.Migrations
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Equipment", b =>
                 {
-                    b.HasOne("ManagementApartments.Data.Models.Room", "Room")
+                    b.HasOne("ManagementApartments.Data.Models.Room", null)
                         .WithMany("Equipment")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Room");
+                        .HasForeignKey("RoomId");
                 });
 
             modelBuilder.Entity("ManagementApartments.Data.Models.RentPeriod", b =>
@@ -505,13 +503,9 @@ namespace ManagementApartments.Data.Migrations
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Room", b =>
                 {
-                    b.HasOne("ManagementApartments.Data.Models.Apartment", "Apartment")
+                    b.HasOne("ManagementApartments.Data.Models.Apartment", null)
                         .WithMany("Rooms")
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Apartment");
+                        .HasForeignKey("ApartmentId");
                 });
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Tenant", b =>

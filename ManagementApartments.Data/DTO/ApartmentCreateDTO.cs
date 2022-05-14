@@ -15,7 +15,5 @@ namespace ManagementApartments.Data.Models
         public double ApartmentPrice { get; set; }
         public double RentPrice { get; set; }
         public double Area { get; set; }
-
-        public string ApplicationUserId { get; set; }
     }
 }

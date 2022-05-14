@@ -23,6 +23,8 @@ namespace ManagementApartments.Data
         public virtual DbSet<RentPeriod> RentPeriod { get; set; }
         public virtual DbSet<Equipment> Equipment { get; set; }
         public virtual DbSet<Tenant> Tenant { get; set; }
+        public virtual DbSet<WorkingContact> WorkingContact { get; set; }
+        public virtual DbSet<ApartmentSpending> ApartmentSpending { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {

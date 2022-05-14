@@ -28,11 +28,29 @@ namespace ManagementApartments.Data.Service
             return apartmentRepository.GetByPage(page, pageSize);
         }
 
+        public Apartment Get(int id, string userId)
+        {
+            return apartmentRepository.Get(id, userId);
+        }
+
         public Apartment Create(ApartmentCreateDTO apartmentDto, string userId)
         {
             Apartment apartment = mapper.Map<ApartmentCreateDTO, Apartment>(apartmentDto);
             apartment.ApplicationUserId = userId;
             return apartmentRepository.Create(apartment);
+        }
+
+        public Apartment Edit(ApartmentCreateDTO apartmentDto, string userId)
+        {
+            var modelFromDb = apartmentRepository.Get(apartmentDto.Id, userId);
+            mapper.Map(apartmentDto, modelFromDb);
+            
+            return apartmentRepository.Update(modelFromDb);
+        }
+
+        public void Remove(int id, string userId)
+        {
+            apartmentRepository.Remove(id, userId);
         }
 
         public string SaveImage(IFormFile file, int apartmentId)

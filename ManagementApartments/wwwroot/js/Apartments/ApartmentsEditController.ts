@@ -5,10 +5,10 @@
 namespace Apartments {
 
     class SaveImageFeedbackViewModel {
-        public StatusSuccess: boolean;
-        public Title: string;
-        public Message: string;
-        public LogoAsBase64: string;
+        public statusSuccess: boolean;
+        public title: string;
+        public message: string;
+        public logoAsBase64: string;
     }
 
     export class ApartmentsEditController {
@@ -77,12 +77,12 @@ namespace Apartments {
                     contentType: false,
                     processData: false,
                     success: function (dataFromServer: SaveImageFeedbackViewModel) {
-                        if (dataFromServer.StatusSuccess) {
-                            controller.elements.imgLogo().attr("src", "data:image/jpg;base64," + dataFromServer.LogoAsBase64);
+                        if (dataFromServer.statusSuccess) {
+                            controller.elements.imgLogo().attr("src", "data:image/jpg;base64," + dataFromServer.logoAsBase64);
                             controller.existImgLogoCallback();
                         }
                         else {
-                            SweetAlertHelper.showErrorAlert(dataFromServer.Title, dataFromServer.Message);
+                            SweetAlertHelper.showErrorAlert(dataFromServer.title, dataFromServer.message);
                         }
                     }
                 });

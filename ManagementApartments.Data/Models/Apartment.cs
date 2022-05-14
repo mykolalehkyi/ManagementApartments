@@ -18,12 +18,14 @@ namespace ManagementApartments.Data.Models
         [Display(Name = "Rent Price")]
         public double RentPrice { get; set; }
         public double Area { get; set; }
+        public string ImageContent { get; set; }
+
 
         public string ApplicationUserId { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
         public List<Room> Rooms { get; set; }
         public List<RentPeriod> RentPeriods { get; set; }
         public List<Utility> Utility { get; set; }
-        public string ImageContent { get; set; }
+        public List<ApartmentSpending> ApartmentSpendings { get; set; }
     }
 }

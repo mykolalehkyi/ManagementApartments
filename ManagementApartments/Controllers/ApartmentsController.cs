@@ -14,6 +14,7 @@ using Microsoft.AspNetCore.Http;
 using System.IO;
 using ManagementApartments.Data.DTO;
 using System.Net;
+using AutoMapper;
 
 namespace ManagementApartments.Controllers
 {
@@ -21,11 +22,13 @@ namespace ManagementApartments.Controllers
     {
         private readonly IApartmentsService apartmentService;
         private readonly ManagementApartmentDbContext _context;
+        private readonly IMapper mapper;
 
-        public ApartmentsController(IApartmentsService apartmentService, ManagementApartmentDbContext context)
+        public ApartmentsController(IApartmentsService apartmentService, ManagementApartmentDbContext context, IMapper mapper)
         {
             this.apartmentService = apartmentService;
             _context = context;
+            this.mapper = mapper;
         }
 
         // GET: Apartments
@@ -71,8 +74,7 @@ namespace ManagementApartments.Controllers
                 apartmentService.Create(apartment, this.User.GetLoggedInUserId<string>());
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id", apartment.ApplicationUserId);
-            return View(apartment);
+            return View(mapper.Map<ApartmentCreateDTO, Apartment>(apartment));
         }
 
         public ActionResult SaveImage(IFormFile file, int apartmentId)
@@ -136,35 +138,20 @@ namespace ManagementApartments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ApartmentPrice,RentPrice,Area,ApplicationUserId")] Apartment apartment)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,Name,Description,ApartmentPrice,RentPrice,Area")] ApartmentCreateDTO apartmentDto)
         {
-            if (id != apartment.Id)
+            if (id != apartmentDto.Id)
             {
                 return NotFound();
             }
 
             if (ModelState.IsValid)
             {
-                try
-                {
-                    _context.Update(apartment);
-                    await _context.SaveChangesAsync();
-                }
-                catch (DbUpdateConcurrencyException)
-                {
-                    if (!ApartmentExists(apartment.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
-                }
+                apartmentService.Edit(apartmentDto, this.User.GetLoggedInUserId<string>());
                 return RedirectToAction(nameof(Index));
             }
-            ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id", apartment.ApplicationUserId);
-            return View(apartment);
+            
+            return View(apartmentService.Get(apartmentDto.Id, this.User.GetLoggedInUserId<string>()));
         }
 
         // GET: Apartments/Delete/5
@@ -195,11 +182,6 @@ namespace ManagementApartments.Controllers
             _context.Apartment.Remove(apartment);
             await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
-        }
-
-        private bool ApartmentExists(int id)
-        {
-            return _context.Apartment.Any(e => e.Id == id);
         }
     }
 }

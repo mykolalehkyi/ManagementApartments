@@ -4,14 +4,16 @@ using ManagementApartments.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ManagementApartments.Data.Migrations
 {
     [DbContext(typeof(ManagementApartmentDbContext))]
-    partial class ManagementApartmentDbContextModelSnapshot : ModelSnapshot
+    [Migration("20220514130105_AddCommWorkingContact")]
+    partial class AddCommWorkingContact
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -167,7 +169,7 @@ namespace ManagementApartments.Data.Migrations
                     b.Property<double>("Price")
                         .HasColumnType("float");
 
-                    b.Property<int>("RoomId")
+                    b.Property<int?>("RoomId")
                         .HasColumnType("int");
 
                     b.HasKey("Id");
@@ -213,7 +215,7 @@ namespace ManagementApartments.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<int>("ApartmentId")
+                    b.Property<int?>("ApartmentId")
                         .HasColumnType("int");
 
                     b.Property<double>("Area")
@@ -291,7 +293,10 @@ namespace ManagementApartments.Data.Migrations
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
 
-                    b.Property<string>("ApplicationUserId")
+                    b.Property<int>("ApplicationUserId")
+                        .HasColumnType("int");
+
+                    b.Property<string>("ApplicationUserId1")
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("Description")
@@ -305,7 +310,7 @@ namespace ManagementApartments.Data.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("ApplicationUserId");
+                    b.HasIndex("ApplicationUserId1");
 
                     b.ToTable("WorkingContact");
                 });
@@ -340,14 +345,14 @@ namespace ManagementApartments.Data.Migrations
                         new
                         {
                             Id = "1",
-                            ConcurrencyStamp = "2acd5995-642a-421f-b1b7-e29aa1d38119",
+                            ConcurrencyStamp = "41bea5d6-df91-4477-b084-48d2a53cd69d",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         },
                         new
                         {
                             Id = "2",
-                            ConcurrencyStamp = "12868913-8b45-492e-80c5-4df2975732fc",
+                            ConcurrencyStamp = "e9381680-68fa-49c5-a807-63e407930695",
                             Name = "User",
                             NormalizedName = "USER"
                         });
@@ -483,13 +488,9 @@ namespace ManagementApartments.Data.Migrations
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Equipment", b =>
                 {
-                    b.HasOne("ManagementApartments.Data.Models.Room", "Room")
+                    b.HasOne("ManagementApartments.Data.Models.Room", null)
                         .WithMany("Equipment")
-                        .HasForeignKey("RoomId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Room");
+                        .HasForeignKey("RoomId");
                 });
 
             modelBuilder.Entity("ManagementApartments.Data.Models.RentPeriod", b =>
@@ -505,13 +506,9 @@ namespace ManagementApartments.Data.Migrations
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Room", b =>
                 {
-                    b.HasOne("ManagementApartments.Data.Models.Apartment", "Apartment")
+                    b.HasOne("ManagementApartments.Data.Models.Apartment", null)
                         .WithMany("Rooms")
-                        .HasForeignKey("ApartmentId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Apartment");
+                        .HasForeignKey("ApartmentId");
                 });
 
             modelBuilder.Entity("ManagementApartments.Data.Models.Tenant", b =>
@@ -532,7 +529,7 @@ namespace ManagementApartments.Data.Migrations
                 {
                     b.HasOne("ManagementApartments.Data.Models.ApplicationUser", "ApplicationUser")
                         .WithMany("WorkingContact")
-                        .HasForeignKey("ApplicationUserId");
+                        .HasForeignKey("ApplicationUserId1");
 
                     b.Navigation("ApplicationUser");
                 });

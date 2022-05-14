@@ -64,12 +64,12 @@ var Apartments;
                     contentType: false,
                     processData: false,
                     success: function (dataFromServer) {
-                        if (dataFromServer.StatusSuccess) {
-                            controller.elements.imgLogo().attr("src", "data:image/jpg;base64," + dataFromServer.LogoAsBase64);
+                        if (dataFromServer.statusSuccess) {
+                            controller.elements.imgLogo().attr("src", "data:image/jpg;base64," + dataFromServer.logoAsBase64);
                             controller.existImgLogoCallback();
                         }
                         else {
-                            SweetAlertHelper.showErrorAlert(dataFromServer.Title, dataFromServer.Message);
+                            SweetAlertHelper.showErrorAlert(dataFromServer.title, dataFromServer.message);
                         }
                     }
                 });

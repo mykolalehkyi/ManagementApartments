@@ -1,6 +1,7 @@
-﻿/// <reference path="../../../node_modules/sweetalert/typings/sweetalert.d.ts" />
+﻿/////// <reference path="../lib/sweetalert/lib/sweet-alert.js" />
+///// <reference path="../../../node_modules/sweetalert/lib/sweetalert.js" />
 ///// <reference path="../lib/sweetalert/sweetalert.min.js" />
-
+declare let swal: any;
 
 class SweetAlertHelper {
     /*

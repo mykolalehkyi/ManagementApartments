@@ -18,5 +18,6 @@ namespace ManagementApartments.Data.Models
         public string LastName { get; set; }
 
         public List<Apartment> Apartments { get; set; }
+        public List<WorkingContact> WorkingContact { get; set; }
     }
 }

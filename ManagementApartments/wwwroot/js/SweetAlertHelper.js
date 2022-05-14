@@ -1,4 +1,3 @@
-/// <reference path="../../../node_modules/sweetalert/typings/sweetalert.d.ts" />
 var SweetAlertHelper = /** @class */ (function () {
     function SweetAlertHelper() {
     }
@@ -7,7 +6,7 @@ var SweetAlertHelper = /** @class */ (function () {
         if (closeOnConfirm === void 0) { closeOnConfirm = true; }
         if (html === void 0) { html = false; }
         var previousWindowKeyDown = window.onkeydown;
-        swal({
+        swal.default({
             title: title,
             text: text,
             type: "success",

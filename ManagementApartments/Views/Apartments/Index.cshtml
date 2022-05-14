@@ -10,7 +10,7 @@
 <h2>Your Apartments</h2>
 
 <p>
-    <a asp-action="Create">Create New</a>
+    <a class="btn btn-primary" asp-action="Create">Create New</a>
 </p>
 
 <div>
@@ -22,10 +22,12 @@
         }
     }
 </div>
-@Html.PagedListPager(@Model, page => Url.Action("Index",
-    new { Page = page }),
-    new PagedListRenderOptions()
-    {
-        LiElementClasses = new string[] { "page-item" },
-        PageClasses = new string[] { "page-link" }
-    })
+<div style="margin-bottom:5px;">
+        @Html.PagedListPager(@Model, page => Url.Action("Index",
+  new { Page = page }),
+  new PagedListRenderOptions()
+  {
+  LiElementClasses = new string[] { "page-item" },
+  PageClasses = new string[] { "page-link" }
+  })
+</div>

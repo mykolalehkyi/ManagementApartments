@@ -31,5 +31,43 @@ namespace ManagementApartments.Data.Repository
         {
             return Query().ToPagedList(page, pageSize);
         }
+
+        public IEnumerable<TEntity> GetAll()
+        {
+            return Context.Set<TEntity>().ToList();
+        }
+
+        public TEntity Add(TEntity entity)
+        {
+            Context.Set<TEntity>().Add(entity);
+            this.Context.SaveChanges();
+            return entity;
+        }
+
+        public IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities)
+        {
+            Context.Set<TEntity>().AddRange(entities);
+            this.Context.SaveChanges();
+            return entities;
+        }
+
+        public TEntity Update(TEntity entity)
+        {
+            Context.Entry(entity).State = EntityState.Modified;
+            Context.SaveChanges();
+            return entity;
+        }
+
+        public void Remove(TEntity entity)
+        {
+            Context.Set<TEntity>().Remove(entity);
+            this.Context.SaveChanges();
+        }
+
+        public void RemoveRange(IEnumerable<TEntity> entities)
+        {
+            Context.Set<TEntity>().RemoveRange(entities);
+            this.Context.SaveChanges();
+        }
     }
 }
