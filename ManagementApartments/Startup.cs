@@ -48,7 +48,16 @@ namespace ManagementApartments
             services.AddRazorPages();
 
             services.AddScoped<IApartmentsService, ApartmentsService>();
+            services.AddScoped<IRoomService, RoomService>();
+            services.AddScoped<IEquipmentsService, EquipmentsService>();
+            services.AddScoped<ITenantsService, TenantsService>();
+            services.AddScoped<IWorkingContactService, WorkingContactService>();
+
             services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
+            services.AddScoped<IRoomRepository, RoomRepository>();
+            services.AddScoped<IEquipmentsRepository, EquipmentsRepository>();
+            services.AddScoped<ITenantsRepository, TenantsRepository>();
+            services.AddScoped<IWorkingContactRepository, WorkingContactRepository>();
 
         }
 

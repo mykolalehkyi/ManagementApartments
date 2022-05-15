@@ -16,7 +16,8 @@ var Apartments;
                 inputSelectedLogo: function () { return $("#inputSelectedLogo"); },
                 lblBtnDeleteLogo: function () { return $("#lblBtnDeleteLogo"); },
                 imgLogo: function () { return $("#imgLogo"); },
-                lblInputUpdloadLogo: function () { return $("#lblInputUpdloadLogo"); }
+                lblInputUpdloadLogo: function () { return $("#lblInputUpdloadLogo"); },
+                roomsTable: function () { return $("#roomsTable"); }
             };
             this.requestUrls = {
                 saveLogo: this.elements.inputSelectedLogo().data("request-url"),
@@ -25,6 +26,7 @@ var Apartments;
             this.bindInputUploadLogo();
             this.bindLblInputUpdloadLogo();
             this.initLblBtnDeleteLogo();
+            this.initDataTable();
         }
         ApartmentsEditController.prototype.initLblBtnDeleteLogo = function () {
             var controller = this;
@@ -110,6 +112,29 @@ var Apartments;
             controller.elements.imgLogo().removeClass("hidden");
             controller.elements.lblBtnDeleteLogo().removeAttr("disabled");
             controller.bindLblBtnDeleteImage();
+        };
+        ApartmentsEditController.prototype.initDataTable = function () {
+            var controller = this;
+            this.datatable = controller.elements.roomsTable();
+            controller.elements.roomsTable().DataTable({
+                ajax: {
+                    "url": controller.elements.roomsTable().data("request-url"),
+                    "type": "GET",
+                    "dataType": "json",
+                    "data": { apartmentId: controller.elements.roomsTable().data("apartment-id") }
+                },
+                columns: [
+                    { data: "name" },
+                    { data: "roomStyle" },
+                    { data: "area" },
+                    {
+                        data: "id",
+                        render: function (data, type, row) {
+                            return "<nobr><a href=\"/Rooms/Edit?id=".concat(data, "\" class=\"btn btn-primary\">Edit\u270E</a>\n                                    <a href=\"/Rooms/Delete?id=").concat(data, "\" class=\"btn btn-danger\">Delete</a></nobr>");
+                        }
+                    }
+                ]
+            });
         };
         return ApartmentsEditController;
     }());

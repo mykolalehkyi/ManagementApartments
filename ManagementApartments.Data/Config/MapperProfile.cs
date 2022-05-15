@@ -15,6 +15,11 @@ namespace ManagementApartments.Data.Config
             CreateMap<Apartment, ApartmentCreateDTO>();
             CreateMap<ApartmentCreateDTO, Apartment>();
 
+            CreateMap<Room, RoomDTO>();
+            CreateMap<RoomDTO, Room>();
+
+            CreateMap<EquipmentDTO, Equipment>();
+            CreateMap<Equipment, EquipmentDTO>();
         }
     }
 }

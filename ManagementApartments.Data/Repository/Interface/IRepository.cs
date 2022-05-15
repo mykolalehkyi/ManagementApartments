@@ -10,6 +10,8 @@ namespace ManagementApartments.Data.Repository.Interface
     {
         TEntity Add(TEntity entity);
         IEnumerable<TEntity> AddRange(IEnumerable<TEntity> entities);
+        TEntity Find(int id);
+        IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate);
         IEnumerable<TEntity> GetAll();
         IPagedList<TEntity> GetByPage(int page, int pageSize);
         IQueryable<TEntity> Query(params Expression<Func<TEntity, object>>[] includes);

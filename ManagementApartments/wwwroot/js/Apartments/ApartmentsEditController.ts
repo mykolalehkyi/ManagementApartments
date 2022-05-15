@@ -12,6 +12,7 @@ namespace Apartments {
     }
 
     export class ApartmentsEditController {
+        private datatable;
 
         private elements = {
             Id: () => $("#Id"),
@@ -19,7 +20,8 @@ namespace Apartments {
             inputSelectedLogo: () => $("#inputSelectedLogo"),
             lblBtnDeleteLogo: () => $("#lblBtnDeleteLogo"),
             imgLogo: () => $("#imgLogo"),
-            lblInputUpdloadLogo: () => $("#lblInputUpdloadLogo")
+            lblInputUpdloadLogo: () => $("#lblInputUpdloadLogo"),
+            roomsTable: () => $("#roomsTable")
         }
 
         private requestUrls = {
@@ -31,6 +33,7 @@ namespace Apartments {
             this.bindInputUploadLogo();
             this.bindLblInputUpdloadLogo();
             this.initLblBtnDeleteLogo();
+            this.initDataTable();
         }
 
         private initLblBtnDeleteLogo() {
@@ -130,6 +133,32 @@ namespace Apartments {
             controller.elements.imgLogo().removeClass("hidden");
             controller.elements.lblBtnDeleteLogo().removeAttr("disabled");
             controller.bindLblBtnDeleteImage();
+        }
+
+        private initDataTable(): void {
+            let controller = this; 
+
+            this.datatable = controller.elements.roomsTable();
+            controller.elements.roomsTable().DataTable({
+                ajax: {
+                    "url": controller.elements.roomsTable().data("request-url"),
+                    "type": "GET",
+                    "dataType": "json",
+                    "data": { apartmentId: controller.elements.roomsTable().data("apartment-id") }
+                },
+                columns: [
+                    { data: "name" },
+                    { data: "roomStyle" },
+                    { data: "area" },
+                    {
+                        data: "id",
+                        render: function (data: string, type, row) {
+                            return `<nobr><a href="/Rooms/Edit?id=${data}" class="btn btn-primary">Edit✎</a>
+                                    <a href="/Rooms/Delete?id=${data}" class="btn btn-danger">Delete</a></nobr>`;
+                        }
+                    }
+                ]
+            });
         }
     }
 

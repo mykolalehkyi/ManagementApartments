@@ -44,30 +44,42 @@
         </form>
     </div>
 </div>
-<div class="col-md-6">
-    <div class="row">
-        <div class="col-sm-12">
-            <div class="input-group">
-                <div class="input-group-btn">
-                    <label id="lblInputUpdloadLogo" for="inputUpdloadLogo" class="btn btn-outline-success" tabindex="0">Select Image</label>
-                    <input id="inputUpdloadLogo" type="file" class="" style="display:none;" />
-                </div>
-                <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveImage", "Apartments")" disabled />
-                <div class="input-group-btn">
-                    <label id="lblBtnDeleteLogo" class="btn btn-outline-danger" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "MaintWarehouseMaster")">Delete Image</label>
-                </div>
+
+<div class="row mt-5">
+    <div class="col-sm-12">
+        <div class="input-group">
+            <div class="input-group-btn">
+                <label id="lblInputUpdloadLogo" for="inputUpdloadLogo" class="btn btn-outline-success" tabindex="0">Select Image</label>
+                <input id="inputUpdloadLogo" type="file" class="" style="display:none;" />
+            </div>
+            <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveImage", "Apartments")" disabled />
+            <div class="input-group-btn">
+                <label id="lblBtnDeleteLogo" class="btn btn-outline-danger" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "MaintWarehouseMaster")">Delete Image</label>
             </div>
         </div>
     </div>
-    <div class="row">
-        <div class="col-sm-12">
-            <img id="imgLogo" class="full-height @(string.IsNullOrEmpty(Model.ImageContent) ? "hidden" : string.Empty)" style="max-height: 265px" src="@(string.IsNullOrEmpty(Model.ImageContent) ? string.Empty : "data:image/jpg;base64," + Model.ImageContent)" />
-        </div>
+</div>
+<div class="row">
+    <div class="col-sm-12">
+        <img id="imgLogo" class="full-height @(string.IsNullOrEmpty(Model.ImageContent) ? "hidden" : string.Empty)" style="max-height: 265px" src="@(string.IsNullOrEmpty(Model.ImageContent) ? string.Empty : "data:image/jpg;base64," + Model.ImageContent)" />
     </div>
 </div>
 
+<a class="btn btn-primary mt-5 mb-1" href="@Url.Action("Create","Rooms",new {apartmentId = Model.Id })">Add room</a>
+
+<table id="roomsTable" class="display" data-apartment-id="@Model.Id" data-request-url="@Url.Action("GetList", "Rooms")">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>RoomStyle</th>
+            <th>Area</th>
+            <th></th>
+        </tr>
+    </thead>
+</table>
+
 <div>
-    <a asp-action="Index">Back to List</a>
+    <a class="btn btn-primary" asp-action="Index">Back to List</a>
 </div>
 
 @section Scripts {

@@ -27,6 +27,15 @@ namespace ManagementApartments.Data.Repository
             return query ?? dbSet;
         }
 
+        public TEntity Find(int id)
+        {
+            return Context.Set<TEntity>().Find(id);
+        }
+        public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
+        {
+            return Context.Set<TEntity>().Where(predicate);
+        }
+
         public IPagedList<TEntity> GetByPage(int page, int pageSize)
         {
             return Query().ToPagedList(page, pageSize);

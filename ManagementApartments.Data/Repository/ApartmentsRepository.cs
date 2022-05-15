@@ -12,23 +12,9 @@ namespace ManagementApartments.Data.Repository
 
         }
 
-        public Apartment Create(Apartment apartment)
-        {
-            this.Context.Apartment.Add(apartment);
-            this.Context.SaveChanges();
-            return apartment;
-        }
-
         public Apartment Get(int id, string userId)
         {
             Apartment apartment = this.Context.Apartment.Where(x => x.Id == id && x.ApplicationUserId == userId).First();
-            return apartment;
-        }
-
-        public Apartment Save(Apartment apartment)
-        {
-            this.Context.Apartment.Add(apartment);
-            this.Context.SaveChanges();
             return apartment;
         }
 

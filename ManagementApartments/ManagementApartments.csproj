@@ -41,6 +41,9 @@
     <TypeScriptCompile Update="wwwroot\js\Apartments\ApartmentsEditController.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\js\Rooms\RoomsEditController.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
   </ItemGroup>
 
   <ItemGroup>

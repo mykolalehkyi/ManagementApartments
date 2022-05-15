@@ -37,7 +37,7 @@ namespace ManagementApartments.Data.Service
         {
             Apartment apartment = mapper.Map<ApartmentCreateDTO, Apartment>(apartmentDto);
             apartment.ApplicationUserId = userId;
-            return apartmentRepository.Create(apartment);
+            return apartmentRepository.Add(apartment);
         }
 
         public Apartment Edit(ApartmentCreateDTO apartmentDto, string userId)
