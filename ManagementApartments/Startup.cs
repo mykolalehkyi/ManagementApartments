@@ -54,6 +54,7 @@ namespace ManagementApartments
             services.AddScoped<IWorkingContactService, WorkingContactService>();
             services.AddScoped<IRentPeriodsService, RentPeriodsService>();
             services.AddScoped<IApartmentSpendingsService, ApartmentSpendingsService>();
+            services.AddScoped<IUtilitiesService, UtilitiesService>();
 
             services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
@@ -62,6 +63,7 @@ namespace ManagementApartments
             services.AddScoped<IWorkingContactRepository, WorkingContactRepository>();
             services.AddScoped<IRentPeriodsRepository, RentPeriodsRepository>();
             services.AddScoped<IApartmentSpendingsRepository, ApartmentSpendingsRepository>();
+            services.AddScoped<IUtilitiesRepository, UtilitiesRepository>();
 
         }
 

@@ -20,9 +20,9 @@ namespace ManagementApartments.Data.Repository
             return items;
         }
 
-        public List<Tenant> GetTenants()
+        public List<Tenant> GetTenants(string userId)
         {
-            return this.Context.Tenant.Include(x => x.RentPeriod).ToList();
+            return this.Context.Tenant.Where(x => x.ApplicationUserId==userId).Include(x => x.RentPeriod).ToList();
         }
 
         public RentPeriod Update(RentPeriod item, List<int> tenantIds)

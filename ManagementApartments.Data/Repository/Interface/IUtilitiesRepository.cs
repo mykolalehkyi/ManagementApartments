@@ -3,8 +3,8 @@ using System.Collections.Generic;
 
 namespace ManagementApartments.Data.Repository.Interface
 {
-    public interface ITenantsRepository : IRepository<Tenant>
+    public interface IUtilitiesRepository : IRepository<Utility>
     {
-        List<Tenant> GetList(string userId);
+        List<Utility> GetList(int apartmentId);
     }
 }

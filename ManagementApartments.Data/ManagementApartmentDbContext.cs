@@ -25,7 +25,7 @@ namespace ManagementApartments.Data
         public virtual DbSet<Tenant> Tenant { get; set; }
         public virtual DbSet<WorkingContact> WorkingContact { get; set; }
         public virtual DbSet<ApartmentSpending> ApartmentSpending { get; set; }
-        //public virtual DbSet<RentPeriodTenant> RentPeriodTenant { get; set; }
+        public virtual DbSet<Utility> Utility { get; set; }
 
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
         {
@@ -39,9 +39,6 @@ namespace ManagementApartments.Data
         {
             base.OnModelCreating(modelBuilder);
             modelBuilder.SeedRoles();
-
-            //modelBuilder.Entity<RentPeriodTenant>()
-            //    .HasOne(x => x.RentPeriodId)
         }
 
     }

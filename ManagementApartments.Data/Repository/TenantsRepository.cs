@@ -13,11 +13,10 @@ namespace ManagementApartments.Data.Repository
         {
 
         }
-
-        //public List<Tenants> GetList(int roomId)
-        //{
-        //    var rooms = this.Context.Equipment.Where(x => x.RoomId == roomId).ToList();
-        //    return rooms;
-        //}
+        public List<Tenant> GetList(string userId)
+        {
+            var rooms = this.Context.Tenant.Where(x => x.ApplicationUserId == userId).ToList();
+            return rooms;
+        }
     }
 }

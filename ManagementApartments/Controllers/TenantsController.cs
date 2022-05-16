@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ManagementApartments.Data;
 using ManagementApartments.Data.Models;
 using ManagementApartments.Data.Service.Interface;
+using ManagementApartments.Data.Config;
 
 namespace ManagementApartments.Controllers
 {
@@ -23,12 +24,14 @@ namespace ManagementApartments.Controllers
         // GET: Tenants
         public IActionResult Index()
         {
-            return View(tenantsService.GetList());
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>();
+            return View(tenantsService.GetList(this.User.GetLoggedInUserId<string>()));
         }
 
         // GET: Tenants/Create
         public IActionResult Create()
         {
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>();
             return View();
         }
 
@@ -37,13 +40,14 @@ namespace ManagementApartments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Create([Bind("Id,FirstName,LastName,PhoneNumber")] Tenant tenant)
+        public IActionResult Create([Bind("Id,FirstName,LastName,PhoneNumber,ApplicationUserId")] Tenant tenant)
         {
             if (ModelState.IsValid)
             {
                 tenantsService.Create(tenant);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>();
             return View(tenant);
         }
 
@@ -55,11 +59,8 @@ namespace ManagementApartments.Controllers
                 return NotFound();
             }
 
-            var tenant = tenantsService.Get(id??0); 
-            if (tenant == null)
-            {
-                return NotFound();
-            }
+            var tenant = tenantsService.Get(id??0);
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>();
             return View(tenant);
         }
 
@@ -68,7 +69,7 @@ namespace ManagementApartments.Controllers
         // For more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public IActionResult Edit(int id, [Bind("Id,FirstName,LastName,PhoneNumber")] Tenant tenant)
+        public IActionResult Edit(int id, [Bind("Id,FirstName,LastName,PhoneNumber,ApplicationUserId")] Tenant tenant)
         {
             if (id != tenant.Id)
             {
@@ -80,6 +81,7 @@ namespace ManagementApartments.Controllers
                 tenantsService.Update(tenant);
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>();
             return View(tenant);
         }
 

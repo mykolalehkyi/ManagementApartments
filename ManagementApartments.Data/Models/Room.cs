@@ -8,6 +8,7 @@ namespace ManagementApartments.Data.Models
         [Key]
         public int Id { get; set; }
         public string Name { get; set; }
+        [Display(Name="Room style")]
         public string RoomStyle { get; set; }
         public double Area { get; set; }
 

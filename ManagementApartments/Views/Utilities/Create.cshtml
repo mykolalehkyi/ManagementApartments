@@ -1,4 +1,4 @@
-﻿@model ManagementApartments.Data.Models.ApartmentSpending
+﻿@model ManagementApartments.Data.Models.Utility
 
 @{
     ViewData["Title"] = "Create";
@@ -6,21 +6,21 @@
 
 <h1>Create</h1>
 
-<h4>Apartment Spending</h4>
+<h4>Utility</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form asp-action="Create">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
-                <label asp-for="Name" class="control-label"></label>
-                <input asp-for="Name" class="form-control" />
-                <span asp-validation-for="Name" class="text-danger"></span>
+                <label asp-for="UtilityType" class="control-label"></label>
+                @Html.DropDownListFor(x => x.UtilityType, Html.GetEnumSelectList<UtilityTypeEnum>(),new { @class = "form-control"})
+                <span asp-validation-for="UtilityType" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <label asp-for="Description" class="control-label"></label>
-                <input asp-for="Description" class="form-control" />
-                <span asp-validation-for="Description" class="text-danger"></span>
+                <label asp-for="Date" class="control-label"></label>
+                <input asp-for="Date" class="form-control" />
+                <span asp-validation-for="Date" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="Price" class="control-label"></label>
@@ -36,7 +36,7 @@
 </div>
 
 <div>
-    <a class="btn btn-primary" href="@Url.Action("Index","ApartmentSpendings", new {apartmentId = ViewBag.ApartmentId })">Back to List</a>
+    <a class="btn btn-primary" href="@Url.Action("Index","Utilities", new {apartmentId = ViewBag.ApartmentId })">Back to List</a>
 </div>
 
 @section Scripts {

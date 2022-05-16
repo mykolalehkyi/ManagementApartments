@@ -34,33 +34,14 @@ namespace ManagementApartments.Controllers
         // GET: Apartments
         public async Task<IActionResult> Index(int page = 1)
         {
-            IPagedList<Apartment> apartments = apartmentService.GetByPage(page, 9);
+            IPagedList<Apartment> apartments = apartmentService.GetByPage(page, 9, this.User.GetLoggedInUserId<string>());
             return View(apartments);
-        }
-
-        // GET: Apartments/Details/5
-        public async Task<IActionResult> Details(int? id)
-        {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            var apartment = await _context.Apartment
-                .Include(a => a.ApplicationUser)
-                .FirstOrDefaultAsync(m => m.Id == id);
-            if (apartment == null)
-            {
-                return NotFound();
-            }
-
-            return View(apartment);
         }
 
         // GET: Apartments/Create
         public IActionResult Create()
         {
-            ViewData["ApplicationUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewData["ApplicationUserId"] = this.User.GetLoggedInUserId<string>(); 
             return View();
         }
 

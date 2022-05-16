@@ -8,7 +8,7 @@ namespace ManagementApartments.Data.Service.Interface
     {
         Tenant Create(Tenant tenant);
         Tenant Get(int id);
-        List<Tenant> GetList();
+        List<Tenant> GetList(string userId);
         void Remove(int id);
         Tenant Update(Tenant tenant);
     }

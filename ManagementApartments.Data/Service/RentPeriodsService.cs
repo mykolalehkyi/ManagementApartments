@@ -44,9 +44,9 @@ namespace ManagementApartments.Data.Service
             return rentPeriodsRepository.Update(item, tenants);
         }
 
-        public List<SelectListItem> GetTenants(int rentPeriodId)
+        public List<SelectListItem> GetTenants(int rentPeriodId,string userId)
         {
-            return rentPeriodsRepository.GetTenants().Select(x => new SelectListItem()
+            return rentPeriodsRepository.GetTenants(userId).Select(x => new SelectListItem()
             {
                 Text = x.FirstName + " " + x.LastName,
                 Value = x.Id.ToString(),

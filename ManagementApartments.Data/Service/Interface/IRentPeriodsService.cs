@@ -10,7 +10,7 @@ namespace ManagementApartments.Data.Service.Interface
         RentPeriod Create(RentPeriod item);
         RentPeriod Get(int id);
         List<RentPeriod> GetList(int apartmentId);
-        List<SelectListItem> GetTenants(int rentPeriodId);
+        List<SelectListItem> GetTenants(int rentPeriodId, string userId);
         void Remove(int id);
         RentPeriod Update(RentPeriod item, List<int> tenants);
     }

@@ -54,7 +54,10 @@
     <TypeScriptCompile Update="wwwroot\js\Rooms\RoomsEditController.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
-    <TypeScriptCompile Update="wwwroot\js\Tenants\TenantsEditController.ts">
+    <TypeScriptCompile Update="wwwroot\js\Tenants\TenantsIndexController.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
+    <TypeScriptCompile Update="wwwroot\js\Utilities\UtilitiesIndexController.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
     <TypeScriptCompile Update="wwwroot\js\WorkingContacts\WorkingContactsEditController.ts">

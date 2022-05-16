@@ -8,7 +8,7 @@ namespace ManagementApartments.Data.Service.Interface
         Apartment Create(ApartmentCreateDTO apartmentDto, string userId);
         Apartment Edit(ApartmentCreateDTO apartmentDto, string userId);
         Apartment Get(int id, string userId);
-        IPagedList<Apartment> GetByPage(int page, int pageSize);
+        IPagedList<Apartment> GetByPage(int page, int pageSize, string userId);
         void Remove(int id, string userId);
         string SaveImage(Microsoft.AspNetCore.Http.IFormFile file, int apartmentId);
     }

@@ -8,6 +8,7 @@ using Microsoft.EntityFrameworkCore;
 using ManagementApartments.Data;
 using ManagementApartments.Data.Models;
 using ManagementApartments.Data.Service.Interface;
+using ManagementApartments.Data.Config;
 
 namespace ManagementApartments.Controllers
 {
@@ -62,7 +63,7 @@ namespace ManagementApartments.Controllers
 
             var rentPeriod = rentPeriodsService.Get(id??0);
             ViewData["ApartmentId"] = rentPeriod.ApartmentId;
-            ViewData["Tenants"] = rentPeriodsService.GetTenants(id??0);
+            ViewData["Tenants"] = rentPeriodsService.GetTenants(id??0, this.User.GetLoggedInUserId<string>());
 
             return View(rentPeriod);
         }

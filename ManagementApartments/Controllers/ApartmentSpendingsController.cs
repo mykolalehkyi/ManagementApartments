@@ -44,6 +44,7 @@ namespace ManagementApartments.Controllers
             if (ModelState.IsValid)
             {
                 apartmentSpendingsService.Create(apartmentSpending);
+                ViewData["ApartmentId"] = apartmentSpending.ApartmentId;
                 return RedirectToAction("Index", "ApartmentSpendings", new { apartmentId = apartmentSpending.ApartmentId });
             }
             ViewData["ApartmentId"] = apartmentSpending.ApartmentId;

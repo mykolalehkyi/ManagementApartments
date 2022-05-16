@@ -23,9 +23,9 @@ namespace ManagementApartments.Data.Service
             return tenantsRepository.Find(id);
         }
 
-        public List<Tenant> GetList()
+        public List<Tenant> GetList(string userId)
         {
-            return tenantsRepository.GetAll().ToList();
+            return tenantsRepository.GetList(userId).ToList();
         }
 
         public Tenant Create(Tenant tenant)

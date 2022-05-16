@@ -23,9 +23,9 @@ namespace ManagementApartments.Data.Service
             this.mapper = mapper;
         }
 
-        public IPagedList<Apartment> GetByPage(int page, int pageSize)
+        public IPagedList<Apartment> GetByPage(int page, int pageSize, string userId)
         {
-            return apartmentRepository.GetByPage(page, pageSize);
+            return apartmentRepository.GetByPage(page, pageSize, userId);
         }
 
         public Apartment Get(int id, string userId)

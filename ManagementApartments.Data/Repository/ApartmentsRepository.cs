@@ -2,6 +2,7 @@
 using ManagementApartments.Data.Repository.Interface;
 using System.Linq;
 using System.Text;
+using X.PagedList;
 
 namespace ManagementApartments.Data.Repository
 {
@@ -16,6 +17,11 @@ namespace ManagementApartments.Data.Repository
         {
             Apartment apartment = this.Context.Apartment.Where(x => x.Id == id && x.ApplicationUserId == userId).First();
             return apartment;
+        }
+
+        public IPagedList<Apartment> GetByPage(int page, int pageSize, string userId)
+        {
+            return Query().Where(x => x.ApplicationUserId == userId).ToPagedList(page, pageSize);
         }
 
         public void Remove(int id, string userId)
