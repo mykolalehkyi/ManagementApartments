@@ -52,12 +52,14 @@ namespace ManagementApartments
             services.AddScoped<IEquipmentsService, EquipmentsService>();
             services.AddScoped<ITenantsService, TenantsService>();
             services.AddScoped<IWorkingContactService, WorkingContactService>();
+            services.AddScoped<IRentPeriodsService, RentPeriodsService>();
 
             services.AddScoped<IApartmentsRepository, ApartmentsRepository>();
             services.AddScoped<IRoomRepository, RoomRepository>();
             services.AddScoped<IEquipmentsRepository, EquipmentsRepository>();
             services.AddScoped<ITenantsRepository, TenantsRepository>();
             services.AddScoped<IWorkingContactRepository, WorkingContactRepository>();
+            services.AddScoped<IRentPeriodsRepository, RentPeriodsRepository>();
 
         }
 

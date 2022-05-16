@@ -1,7 +1,4 @@
-﻿/////// <reference path="../../lib/sweetalert/sweetalert.min.js" />
-/////// <reference path="../sweetalerthelper.ts" />
-/////// <reference path="../../lib/jquery/dist/jquery.js" />
-
+﻿
 namespace Apartments {
 
     export class RoomsEditController {

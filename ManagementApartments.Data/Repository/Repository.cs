@@ -31,6 +31,7 @@ namespace ManagementApartments.Data.Repository
         {
             return Context.Set<TEntity>().Find(id);
         }
+
         public IEnumerable<TEntity> Find(Expression<Func<TEntity, bool>> predicate)
         {
             return Context.Set<TEntity>().Where(predicate);

@@ -7,6 +7,7 @@
 <h1>Edit</h1>
 
 <h4>Apartment</h4>
+<a class="btn btn-primary" href="@Url.Action("Index","RentPeriods",new {apartmentId = Model.Id })">Rent Periods</a>
 <hr />
 <div class="row">
     <div class="col-md-4">
@@ -44,6 +45,7 @@
         </form>
     </div>
 </div>
+<hr />
 
 <div class="row mt-5">
     <div class="col-sm-12">
@@ -64,6 +66,7 @@
         <img id="imgLogo" class="full-height @(string.IsNullOrEmpty(Model.ImageContent) ? "hidden" : string.Empty)" style="max-height: 265px" src="@(string.IsNullOrEmpty(Model.ImageContent) ? string.Empty : "data:image/jpg;base64," + Model.ImageContent)" />
     </div>
 </div>
+<hr />
 
 <a class="btn btn-primary mt-5 mb-1" href="@Url.Action("Create","Rooms",new {apartmentId = Model.Id })">Add room</a>
 

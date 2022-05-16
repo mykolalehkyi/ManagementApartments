@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 
 namespace ManagementApartments.Data.Models
 {
@@ -10,5 +11,6 @@ namespace ManagementApartments.Data.Models
         public string LastName { get; set; }
         public string PhoneNumber { get; set; }
 
+        public List<RentPeriod> RentPeriod { get; set; }
     }
 }

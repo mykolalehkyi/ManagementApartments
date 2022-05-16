@@ -1,6 +1,3 @@
-/////// <reference path="../../lib/sweetalert/sweetalert.min.js" />
-/////// <reference path="../sweetalerthelper.ts" />
-/////// <reference path="../../lib/jquery/dist/jquery.js" />
 var Apartments;
 (function (Apartments) {
     var RoomsEditController = /** @class */ (function () {

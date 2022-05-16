@@ -1,5 +1,6 @@
 ﻿using ManagementApartments.Data.Models;
 using ManagementApartments.Data.Repository.Interface;
+using Microsoft.EntityFrameworkCore;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;

@@ -1,0 +1,60 @@
+﻿@model IEnumerable<ManagementApartments.Data.Models.RentPeriod>
+
+@{
+    ViewData["Title"] = "Rent Periods";
+}
+
+<h1>Rent Periods</h1>
+
+<p>
+    <a class="btn btn-primary" href="@Url.Action("Create","RentPeriods", new {apartmentId = ViewBag.ApartmentId })" >Create New</a>
+</p>
+<table id="rentPeriodsTable" class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Start)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.End)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Payed)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Start)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.End)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Price)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Payed)
+            </td>
+            <td>
+                <a class="btn btn-primary" asp-action="Edit" asp-route-id="@item.Id">Edit</a> 
+                <a class="btn btn-danger" asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+
+<div>
+    <a class="btn btn-primary" href="@Url.Action("Edit","Apartments", new {id = ViewBag.ApartmentId })">Back to Apartment</a>
+</div>
+
+@section scripts{
+    <script src="~/js/RentPeriods/RentPeriodsIndexController.js"></script>
+}

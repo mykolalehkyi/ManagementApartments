@@ -4,9 +4,8 @@ using System.ComponentModel.DataAnnotations;
 
 namespace ManagementApartments.Data.Models
 {
-    public class RentPeriod
+    public class RentPeriodCreateDTO
     {
-        [Key]
         public int Id { get; set; }
         public DateTime Start { get; set; }
         public DateTime End { get; set; }
