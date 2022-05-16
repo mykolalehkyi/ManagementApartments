@@ -39,6 +39,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <TypeScriptCompile Update="wwwroot\js\ApartmentSpendingsTable\ApartmentSpendingsIndexController.ts">
+      <SubType>Code</SubType>
+    </TypeScriptCompile>
     <TypeScriptCompile Update="wwwroot\js\Apartments\ApartmentsEditController.ts">
       <SubType>Code</SubType>
     </TypeScriptCompile>
