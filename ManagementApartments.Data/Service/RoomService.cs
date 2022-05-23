@@ -44,14 +44,6 @@ namespace ManagementApartments.Data.Service
             return roomRepository.Update(room);
         }
 
-        //public Apartment Edit(ApartmentCreateDTO apartmentDto, string userId)
-        //{
-        //    var modelFromDb = apartmentRepository.Get(apartmentDto.Id, userId);
-        //    mapper.Map(apartmentDto, modelFromDb);
-
-        //    return apartmentRepository.Update(modelFromDb);
-        //}
-
         public void Remove(int id)
         {
             roomRepository.Remove(roomRepository.Find(id));
