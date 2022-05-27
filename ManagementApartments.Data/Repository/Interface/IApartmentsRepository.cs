@@ -9,5 +9,6 @@ namespace ManagementApartments.Data.Repository.Interface
         IPagedList<Apartment> GetByPage(int page, int pageSize, string userId);
         void Remove(int id, string userId);
         Apartment SaveImage(string logoAsString, int apartmentId);
+        void DeleteLogo(int apartmentId);
     }
 }

@@ -65,5 +65,10 @@ namespace ManagementApartments.Data.Service
             apartmentRepository.SaveImage(logoAsString, apartmentId);
             return logoAsString;
         }
+
+        public void DeleteLogo(int apartmentId)
+        {
+            apartmentRepository.DeleteLogo(apartmentId);
+        }
     }
 }

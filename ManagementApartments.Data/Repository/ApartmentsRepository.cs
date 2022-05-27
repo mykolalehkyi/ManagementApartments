@@ -38,5 +38,12 @@ namespace ManagementApartments.Data.Repository
             this.Context.SaveChanges();
             return apartment;
         }
+
+        public void DeleteLogo(int apartmentId)
+        {
+            Apartment apartment = this.Context.Apartment.Where(x => x.Id == apartmentId).First();
+            apartment.ImageContent = "";
+            this.Context.SaveChanges();
+        }
     }
 }

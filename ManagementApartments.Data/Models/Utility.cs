@@ -7,6 +7,7 @@ namespace ManagementApartments.Data.Models
     {
         [Key]
         public int Id { get; set; }
+        [Display(Name = "Utility Type")]
         public UtilityTypeEnum UtilityType { get; set; }
         public DateTime Date { get; set; }
         public double Price { get; set; }

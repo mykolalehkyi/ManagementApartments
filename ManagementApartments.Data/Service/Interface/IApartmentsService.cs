@@ -11,5 +11,6 @@ namespace ManagementApartments.Data.Service.Interface
         IPagedList<Apartment> GetByPage(int page, int pageSize, string userId);
         void Remove(int id, string userId);
         string SaveImage(Microsoft.AspNetCore.Http.IFormFile file, int apartmentId);
+        void DeleteLogo(int apartmentId);
     }
 }

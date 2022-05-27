@@ -8,6 +8,7 @@ namespace ManagementApartments.Data.Models
         public int Id { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }
+        [Display(Name = "Phone Number")]
         public string PhoneNumber { get; set; }
 
         public string ApplicationUserId { get; set; }

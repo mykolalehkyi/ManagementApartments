@@ -29,14 +29,14 @@
             </div>
             <input asp-for="ApartmentId" style="display:none" value="@ViewBag.ApartmentId" />
             <div class="form-group">
-                <input type="submit" value="Create" class="btn btn-primary" />
+                <input type="submit" value="Create" class="btn btn-success" />
             </div>
         </form>
     </div>
 </div>
 
 <div>
-    <a href="@Url.Action("Edit","Apartments",new { Id = ViewBag.ApartmentId})">Back to List</a>
+    <a class="btn btn-primary" href="@Url.Action("Edit","Apartments",new { Id = ViewBag.ApartmentId})">Back to List</a>
 </div>
 
 @section Scripts {

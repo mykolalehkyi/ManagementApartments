@@ -89,6 +89,13 @@ namespace ManagementApartments.Controllers
             }
         }
 
+        public ActionResult DeleteLogo(int apartmentId)
+        {
+            this.apartmentService.DeleteLogo(apartmentId);
+
+            return Json(true);
+        }
+
         // GET: Apartments/Edit/5
         public IActionResult Edit(int? id)
         {

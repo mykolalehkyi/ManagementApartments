@@ -42,7 +42,7 @@
                 <span asp-validation-for="Area" class="text-danger"></span>
             </div>
             <div class="form-group">
-                <input type="submit" value="Save" class="btn btn-primary" />
+                <input type="submit" value="Save" class="btn btn-success" />
             </div>
         </form>
     </div>
@@ -58,7 +58,7 @@
             </div>
             <input id="inputSelectedLogo" class="form-control full-width" type="text" data-request-url="@Url.Action("SaveImage", "Apartments")" disabled />
             <div class="input-group-btn">
-                <label id="lblBtnDeleteLogo" class="btn btn-outline-danger" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "MaintWarehouseMaster")">Delete Image</label>
+                <label id="lblBtnDeleteLogo" class="btn btn-outline-danger" style="margin-left:5px;" data-request-url="@Url.Action("DeleteLogo", "Apartments")">Delete Image</label>
             </div>
         </div>
     </div>
