@@ -54,14 +54,6 @@ namespace ManagementApartments.Data.Service
             }).ToList();
         }
 
-        //public Apartment Edit(ApartmentCreateDTO apartmentDto, string userId)
-        //{
-        //    var modelFromDb = apartmentRepository.Get(apartmentDto.Id, userId);
-        //    mapper.Map(apartmentDto, modelFromDb);
-
-        //    return apartmentRepository.Update(modelFromDb);
-        //}
-
         public void Remove(int id)
         {
             rentPeriodsRepository.Remove(rentPeriodsRepository.Find(id));
